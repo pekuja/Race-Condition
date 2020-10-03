@@ -79,14 +79,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f500d6a5ad45c4947a19e1cab9d1a6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 25
-  maxReverseAcceleration: 25
+  maxAcceleration: 12.5
+  maxReverseAcceleration: 12.5
   maxSteer: 30
-  maxBrake: 50
+  maxBrake: 25
   maxSpeed: 50
   maxReverseSpeed: 25
-  sideSlipForce: 4
+  turningForce: 4
+  sideSlipForce: 1
   forwardFrictionForce: 0.05
+  sideSlipAngle: 2
   aerodynamicsForce: 1
   frontLeftWheel: {fileID: 6291912238352163558}
   frontRightWheel: {fileID: 6291912238828157814}
@@ -247,6 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc11593e3a6ad0449153838bf1fa278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostCarPrefab: {fileID: 0}
+  ghostSpawnDelay: 5
 --- !u!114 &476488427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,8 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCheckpoint: 1
-  ghostCarPrefab: {fileID: 3139331381314166837, guid: 8421e83124e8aa24f9f4f3fd69d94dfb,
-    type: 3}
 --- !u!1 &6291912237878520936
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +511,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6291912237241275640}
     m_Modifications:
+    - target: {fileID: -8837396944751496619, guid: 27e6eac12fba3b54296540c4d08756fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27e6eac12fba3b54296540c4d08756fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -564,10 +571,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5080169010347596756, guid: 27e6eac12fba3b54296540c4d08756fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 173086368162926075, guid: 27e6eac12fba3b54296540c4d08756fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 27e6eac12fba3b54296540c4d08756fb,
         type: 3}
       propertyPath: m_Name
       value: car
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003037877719085201, guid: 27e6eac12fba3b54296540c4d08756fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e6eac12fba3b54296540c4d08756fb, type: 3}

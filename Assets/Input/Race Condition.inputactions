@@ -119,7 +119,7 @@
                 {
                     "name": "",
                     "id": "29cc5643-3b12-4646-8cab-ec730b3ac72e",
-                    "path": "<XInputController>/buttonEast",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

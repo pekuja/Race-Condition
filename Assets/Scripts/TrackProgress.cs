@@ -8,6 +8,9 @@ public class TrackProgress : MonoBehaviour
 
 	int lastCheckpoint = 0;
 
+	private RaceTimer raceTimer;
+	private CheckpointCounter counter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,9 @@ public class TrackProgress : MonoBehaviour
 				lastCheckpoint = cp.checkpointNumber;
 			}
 		}
+
+		raceTimer = FindObjectOfType<RaceTimer>();
+		counter = FindObjectOfType<CheckpointCounter>();
     }
 
 	private void OnTriggerEnter(Collider other)
@@ -36,6 +42,9 @@ public class TrackProgress : MonoBehaviour
 			{
 				++nextCheckpoint;
 			}
+
+			raceTimer.CheckpointReached();
+			counter.CheckpointReached();
 		}
 	}
 }

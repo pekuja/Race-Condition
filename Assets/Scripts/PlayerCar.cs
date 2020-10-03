@@ -20,8 +20,11 @@ public class PlayerCar : MonoBehaviour
 	public float maxSpeed = 100.0f;
 	public float maxReverseSpeed = 50.0f;
 
-	public float sideSlipForce = 100.0f;
+	public float turningForce = 4.0f;
+	public float sideSlipForce = 1.0f;
 	public float forwardFrictionForce = 10.0f;
+
+	public float sideSlipAngle = 30.0f;
 
 	public float aerodynamicsForce = 10.0f;
 
@@ -30,15 +33,27 @@ public class PlayerCar : MonoBehaviour
 	public Transform backLeftWheel;
 	public Transform backRightWheel;
 
+	RaceTimer raceTimer;
+
 	// Start is called before the first frame update
 	void Start()
     {
 		rigidbody = GetComponent<Rigidbody>();
+
+		raceTimer = FindObjectOfType<RaceTimer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+		if (raceTimer.timeLeft <= 0.0f)
+		{
+			accelerate = 0.0f;
+			steer = 0.0f;
+			brake = 0.0f;
+			reverse = 0.0f;
+		}
+
 		Transform[] wheels = { frontLeftWheel, frontRightWheel, backLeftWheel, backRightWheel };
 
 		foreach (Transform wheel in wheels)
@@ -73,20 +88,31 @@ public class PlayerCar : MonoBehaviour
 
 			if (grounded.isGrounded)
 			{
-				if (!isFrontWheel)
+				//if (!isFrontWheel)
 				{
 					float accelerationMultiplier = Mathf.Clamp01(1.0f - Vector3.Dot(velocity, forward) / maxSpeed);
 					rigidbody.AddForceAtPosition(accelerate * forward * maxAcceleration, wheel.position);
 					float reverseMultiplier = Mathf.Clamp01(1.0f - Vector3.Dot(velocity, -forward) / maxReverseSpeed);
 					rigidbody.AddForceAtPosition(-reverse * forward * maxReverseAcceleration, wheel.position);
-					rigidbody.AddForceAtPosition(-brake * velocity, wheel.position);
 				}
 
+				float forwardFrictionWithBrake = forwardFrictionForce;
+
+				if (isFrontWheel)
+				{
+					forwardFrictionWithBrake = Mathf.Lerp(forwardFrictionForce, sideSlipForce, brake);
+
+					//rigidbody.AddForceAtPosition(-brake * velocity, wheel.position);
+				}
+
+				float slipAngle = Vector3.Angle(forward, velocity);
+				float sideForce = sideForce = Mathf.Lerp(turningForce, sideSlipForce, slipAngle / sideSlipAngle);
+
 				float frictionMultiplier = Vector3.Dot(velocity, right);
-				rigidbody.AddForceAtPosition(-frictionMultiplier * right * sideSlipForce, wheel.position);
+				rigidbody.AddForceAtPosition(-frictionMultiplier * right * sideForce, wheel.position);
 
 				frictionMultiplier = Vector3.Dot(velocity, forward);
-				rigidbody.AddForceAtPosition(-frictionMultiplier * forward * forwardFrictionForce, wheel.position);
+				rigidbody.AddForceAtPosition(-frictionMultiplier * forward * forwardFrictionWithBrake, wheel.position);
 			}
 		}
 
