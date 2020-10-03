@@ -27,7 +27,7 @@ public class RaceTimer : MonoBehaviour
 
 		text = GetComponent<TextMeshProUGUI>();
 
-		text.text = "" + Mathf.CeilToInt(timeLeft);
+		text.text = "⏱" + Mathf.CeilToInt(timeLeft);
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class RaceTimer : MonoBehaviour
 		}
 		else
 		{
-			text.text = "" + Mathf.CeilToInt(timeLeft);
+			text.text = "⏱" + Mathf.CeilToInt(timeLeft);
 		}
 	}
 }

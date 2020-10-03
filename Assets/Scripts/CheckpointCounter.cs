@@ -14,13 +14,13 @@ public class CheckpointCounter : MonoBehaviour
 	{
 		text = GetComponent<TextMeshProUGUI>();
 
-		text.text = "" + count;
+		text.text = "🏁" + count;
 	}
 
 	public void CheckpointReached()
 	{
 		++count;
 
-		text.text = "" + count;
+		text.text = "🏁" + count;
 	}
 }

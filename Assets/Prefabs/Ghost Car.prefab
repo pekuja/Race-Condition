@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6291912237241275641}
   - component: {fileID: 6291912237241275646}
   - component: {fileID: 3139331381314166837}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
