@@ -10,6 +10,8 @@ public class RaceTimer : MonoBehaviour
 
 	public float timeLeft;
 
+	public bool started = false;
+
 	TextMeshProUGUI text;
 
 	public void CheckpointReached()
@@ -28,20 +30,25 @@ public class RaceTimer : MonoBehaviour
 		text = GetComponent<TextMeshProUGUI>();
 
 		text.text = "⏱" + Mathf.CeilToInt(timeLeft);
+		text.enabled = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
 	{
-		timeLeft -= Time.fixedDeltaTime;
+		if (started)
+		{
+			timeLeft -= Time.fixedDeltaTime;
 
-		if (timeLeft <= 0.0f)
-		{
-			text.enabled = false;
-		}
-		else
-		{
-			text.text = "⏱" + Mathf.CeilToInt(timeLeft);
+			if (timeLeft <= 0.0f)
+			{
+				text.enabled = false;
+			}
+			else
+			{
+				text.enabled = true;
+				text.text = "⏱" + Mathf.CeilToInt(timeLeft);
+			}
 		}
 	}
 }

@@ -1,0 +1,16 @@
+# Made using Asset Forge (2.1.0)
+
+:materials
+
+[name:_defaultMat;color:RGBA(0.939, 0.953, 1.000, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0.25;]
+[name:wood;color:RGBA(0.840, 0.435, 0.305, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0;]
+[name:metalLight;color:RGBA(0.698, 0.686, 0.867, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0.5;]
+[name:metal;color:RGBA(0.580, 0.569, 0.769, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0.5;]
+[name:foliage;color:RGBA(0.000, 0.655, 0.486, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0;]
+
+:models
+
+[name:;collection:Foliage;type:trunk;position:(0.0000, -0.0200, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.2000, 3.0000, 1.2000);group:;locked:False;hidden:False;materials:wood;]
+[name:;collection:Foliage;type:leafs_round;position:(0.0000, 1.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.5000, 1.5000, 1.5000);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Foliage;type:leafs_round;position:(0.0000, 0.7000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Foliage;type:leafs_round;position:(0.0000, 1.6000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:foliage;]

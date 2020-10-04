@@ -21,6 +21,7 @@ public class Grounder : MonoBehaviour
 		foreach (Grounded g in grounded)
 		{
 			g.isGrounded = false;
+			g.numContactPoints = 0;
 		}
     }
 
@@ -34,6 +35,8 @@ public class Grounder : MonoBehaviour
 			{
 				if (contact.thisCollider == g.collider)
 				{
+					g.groundNormal = (g.groundNormal * g.numContactPoints + contact.normal) / (g.numContactPoints + 1);
+					g.numContactPoints++;
 					g.isGrounded = true;
 
 					break;

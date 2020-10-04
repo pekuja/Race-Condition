@@ -88,6 +88,8 @@ public class PlayerCar : MonoBehaviour
 
 			if (grounded.isGrounded)
 			{
+				forward = Vector3.Cross(right, grounded.groundNormal);
+
 				//if (!isFrontWheel)
 				{
 					float accelerationMultiplier = Mathf.Clamp01(1.0f - Vector3.Dot(velocity, forward) / maxSpeed);
@@ -97,6 +99,7 @@ public class PlayerCar : MonoBehaviour
 				}
 
 				float forwardFrictionWithBrake = forwardFrictionForce;
+				float turningForceWithBrake = turningForce;
 
 				if (isFrontWheel)
 				{
@@ -104,9 +107,13 @@ public class PlayerCar : MonoBehaviour
 
 					//rigidbody.AddForceAtPosition(-brake * velocity, wheel.position);
 				}
+				else
+				{
+					turningForceWithBrake = Mathf.Lerp(turningForce, forwardFrictionForce, brake);
+				}
 
 				float slipAngle = Vector3.Angle(forward, velocity);
-				float sideForce = sideForce = Mathf.Lerp(turningForce, sideSlipForce, slipAngle / sideSlipAngle);
+				float sideForce = sideForce = Mathf.Lerp(turningForceWithBrake, sideSlipForce, slipAngle / sideSlipAngle);
 
 				float frictionMultiplier = Vector3.Dot(velocity, right);
 				rigidbody.AddForceAtPosition(-frictionMultiplier * right * sideForce, wheel.position);
