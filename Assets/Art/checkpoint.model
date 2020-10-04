@@ -8,6 +8,6 @@
 
 :models
 
-[name:;collection:Primitives;type:cylinder;position:(5.0000, 0.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(0.2000, 5.0000, 0.2000);group:;locked:False;hidden:False;materials:custom2;]
-[name:;collection:Primitives;type:cylinder;position:(-5.0000, 0.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(0.2000, 5.0000, 0.2000);group:;locked:False;hidden:False;materials:custom2;]
-[name:;collection:Primitives;type:block;position:(0.0000, 4.0000, 0.0062);rotation:(0.0000, 0.0000, 0.0000);scale:(9.8000, 1.0000, 0.0269);group:;locked:False;hidden:False;materials:custom1;]
+[name:;collection:Primitives;type:cylinder;position:(-10.0000, 0.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(0.2000, 5.0000, 0.2000);group:;locked:False;hidden:False;materials:custom2;]
+[name:;collection:Primitives;type:cylinder;position:(10.0000, 0.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(0.2000, 5.0000, 0.2000);group:;locked:False;hidden:False;materials:custom2;]
+[name:;collection:Primitives;type:block;position:(0.0000, 4.0000, 0.0062);rotation:(0.0000, 0.0000, 0.0000);scale:(20.0000, 1.0000, 0.0300);group:;locked:False;hidden:False;materials:custom1;]

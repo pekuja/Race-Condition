@@ -11,11 +11,11 @@ public class Countdown : MonoBehaviour
 
 	public float goTextDuration = 2.0f;
 
-	private float timeLeft;
+	public  float timeLeft;
 
 	private TextMeshProUGUI text;
 
-	private PlayerCar player;
+	//private PlayerCar player;
 	private GhostRecorder ghostRec;
 
     // Start is called before the first frame update
@@ -24,10 +24,10 @@ public class Countdown : MonoBehaviour
 		timeLeft = secondsOfCountdown;
 
 		text = GetComponent<TextMeshProUGUI>();
-		player = FindObjectOfType<PlayerCar>();
+		//player = FindObjectOfType<PlayerCar>();
 		ghostRec = FindObjectOfType<GhostRecorder>();
 
-		player.enabled = false;
+		//player.enabled = false;
 		ghostRec.enabled = false;
     }
 
@@ -46,7 +46,7 @@ public class Countdown : MonoBehaviour
 			{
 				RaceTimer timer = FindObjectOfType<RaceTimer>();
 				timer.started = true;
-				player.enabled = true;
+				//player.enabled = true;
 				ghostRec.enabled = true;
 			}
 

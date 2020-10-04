@@ -34,6 +34,7 @@ public class PlayerCar : MonoBehaviour
 	public Transform backRightWheel;
 
 	RaceTimer raceTimer;
+	Countdown countdown;
 
 	// Start is called before the first frame update
 	void Start()
@@ -41,17 +42,15 @@ public class PlayerCar : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody>();
 
 		raceTimer = FindObjectOfType<RaceTimer>();
+		countdown = FindObjectOfType<Countdown>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-		if (raceTimer.timeLeft <= 0.0f)
+		if (raceTimer.timeLeft <= 0.0f || countdown.timeLeft > 0.0f)
 		{
-			accelerate = 0.0f;
-			steer = 0.0f;
-			brake = 0.0f;
-			reverse = 0.0f;
+			return;
 		}
 
 		Transform[] wheels = { frontLeftWheel, frontRightWheel, backLeftWheel, backRightWheel };
@@ -101,15 +100,15 @@ public class PlayerCar : MonoBehaviour
 				float forwardFrictionWithBrake = forwardFrictionForce;
 				float turningForceWithBrake = turningForce;
 
-				if (isFrontWheel)
+				//if (isFrontWheel)
 				{
 					forwardFrictionWithBrake = Mathf.Lerp(forwardFrictionForce, sideSlipForce, brake);
 
 					//rigidbody.AddForceAtPosition(-brake * velocity, wheel.position);
 				}
-				else
+				//else
 				{
-					turningForceWithBrake = Mathf.Lerp(turningForce, forwardFrictionForce, brake);
+					//turningForceWithBrake = Mathf.Lerp(turningForce, forwardFrictionForce, brake);
 				}
 
 				float slipAngle = Vector3.Angle(forward, velocity);

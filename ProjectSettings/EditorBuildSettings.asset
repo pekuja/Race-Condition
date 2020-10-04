@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/flat ground.unity
+    guid: af09d7008d3925947a7771fd798a3b4e
   m_configObjects: {}
